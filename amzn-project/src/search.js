@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 
-let search =  async (q) => {
+const search = async (q) => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(0);
@@ -70,9 +70,7 @@ let search =  async (q) => {
 
   let chosenVal = Math.min(...realValues);
 
-  let winnerProduct = Object.keys(table).find(
-    (key) => table[key] == chosenVal
-  );
+  let winnerProduct = Object.keys(table).find((key) => table[key] == chosenVal);
 
   let item = getData.find((element) => element.name == winnerProduct);
 
@@ -81,4 +79,6 @@ let search =  async (q) => {
   return item;
 };
 
-search("monitors").then(res => console.log(res)).catch(err => console.error(err))
+
+
+export default search;
